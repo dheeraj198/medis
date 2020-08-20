@@ -9,13 +9,16 @@ const studentSchema = new mongoose.Schema({
   rollno: {
     type: Number,
   },
-  email: {
-    type: String,
-  },
-  rollno: {
+  mobileno: {
     type: Number,
   },
   email: {
+    type: String,
+  },
+  DUAcd: {
+    type: String,
+  },
+  DUHostel: {
     type: String,
   }
 });

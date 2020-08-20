@@ -5,12 +5,12 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 const Student = require('../models/student');
 // login Page
-
+router.get('/', forwardAuthenticated, (req, res) => res.render('login'));
 
 //info
-router.get("/" , function(req,res){
-   res.render("info");
-});
+router.get('/info', ensureAuthenticated, (req, res) =>
+  res.render('info')
+);
 ///////////////////
 router.post('/info',function(req,res){
  const student= new Student({
@@ -20,9 +20,7 @@ router.post('/info',function(req,res){
    mobileno:req.body.studentMobile,
    email:req.body.studentEmail,
    DUAcd:req.body.studentDUAcd,
-   DUAcdAmt:req.body.studentDUAcdAmt,
-   DUHostel:req.body.studentDUHostel,
-   DUHostelAmt:req.body.studentDUHostelAmt
+   DUAcdAmt:req.body.studentDUAcdAmt
  });
  student.save(function(err){
    if (!err){
@@ -30,26 +28,11 @@ router.post('/info',function(req,res){
    }
  });
 });
-// Student.findOne({function(err, record){
-//   res.render("record", {
-//     name: record.name,
-//     branch: record.branch
-//   });
-// });
-
-router.get("/record", function(req, res){
-  Student.find({}, function(err, records){
-    res.render("record", {
-      records: records
-      });
-  });
-});
-
 // router.get("/library" , function(req,res){
 //    res.render("library");
 // });
 // router.post('/library',function(req,res){
-//  const library= new student({
+//  const library= new Student({
 //    rollno:req.body.studentRollno,
 //    branch:req.body.studentBranch
 //  });
@@ -64,12 +47,11 @@ router.get("/record", function(req, res){
 //    res.render("acedmics");
 // });
 // router.post('/acedmics',function(req,res){
-//  const acedmics= new student({
-//    rollno:req.body.studentRollno,
+//  const student= new Student({
 //    DUAcd:req.body.DUAcadmics,
 //    DUAcdAmt:req.body.acadmicsAmount
 //  });
-//  acedmics.save(function(err){
+//  student.save(function(err){
 //    if (!err){
 //        res.redirect("/hostel");
 //    }
@@ -80,14 +62,13 @@ router.get("/record", function(req, res){
 //    res.render("hostel");
 // });
 // router.post('/hostel',function(req,res){
-//  const hostel= new student({
-//    rollno:req.body.studentRollno,
+//  const student= new Student({
 //    DUHostel:req.body.DUHostel,
 //    DUHostelAmt:req.body.hostelAmount
 //  });
-//  hostel.save(function(err){
+//  student.save(function(err){
 //    if (!err){
-//        res.redirect("/success");
+//        res.redirect("/record");
 //    }
 //  });
 // });
@@ -96,4 +77,9 @@ router.get("/record", function(req, res){
 //    res.render("success");
 // });
 
+router.get("/record", function(req, res){
+  Student.find({}, function(err, posts){
+    res.render("record", {posts: posts});
+  });
+});
 module.exports = router;
