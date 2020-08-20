@@ -18,9 +18,51 @@ router.post('/info',function(req,res){
    branch:req.body.studentBranch,
    rollno:req.body.studentRollno,
    mobileno:req.body.studentMobile,
-   email:req.body.studentEmail,
-   DUAcd:req.body.studentDUAcd,
-   DUAcdAmt:req.body.studentDUAcdAmt
+   email:req.body.studentEmail
+ });
+ student.save(function(err){
+   if (!err){
+       res.redirect("/library");
+   }
+ });
+});
+router.get("/library" , function(req,res){
+   res.render("library");
+});
+router.post('/library',function(req,res){
+ const student= new Student({
+   rollno:req.body.studentRollno,
+   branch:req.body.studentBranch
+ });
+ student.save(function(err){
+   if (!err){
+       res.redirect("/acedmics");
+   }
+ });
+});
+
+router.get("/acedmics" , function(req,res){
+   res.render("acedmics");
+});
+router.post('/acedmics',function(req,res){
+ const student= new Student({
+   DUAcd:req.body.DUAcadmics,
+   DUAcdAmt:req.body.acadmicsAmount
+ });
+ student.save(function(err){
+   if (!err){
+       res.redirect("/hostel");
+   }
+ });
+});
+
+router.get("/hostel" , function(req,res){
+   res.render("hostel");
+});
+router.post('/hostel',function(req,res){
+ const student= new Student({
+   DUHostel:req.body.DUHostel,
+   DUHostelAmt:req.body.hostelAmount
  });
  student.save(function(err){
    if (!err){
@@ -28,54 +70,10 @@ router.post('/info',function(req,res){
    }
  });
 });
-// router.get("/library" , function(req,res){
-//    res.render("library");
-// });
-// router.post('/library',function(req,res){
-//  const library= new Student({
-//    rollno:req.body.studentRollno,
-//    branch:req.body.studentBranch
-//  });
-//  library.save(function(err){
-//    if (!err){
-//        res.redirect("/acedmics");
-//    }
-//  });
-// });
-//
-// router.get("/acedmics" , function(req,res){
-//    res.render("acedmics");
-// });
-// router.post('/acedmics',function(req,res){
-//  const student= new Student({
-//    DUAcd:req.body.DUAcadmics,
-//    DUAcdAmt:req.body.acadmicsAmount
-//  });
-//  student.save(function(err){
-//    if (!err){
-//        res.redirect("/hostel");
-//    }
-//  });
-// });
-//
-// router.get("/hostel" , function(req,res){
-//    res.render("hostel");
-// });
-// router.post('/hostel',function(req,res){
-//  const student= new Student({
-//    DUHostel:req.body.DUHostel,
-//    DUHostelAmt:req.body.hostelAmount
-//  });
-//  student.save(function(err){
-//    if (!err){
-//        res.redirect("/record");
-//    }
-//  });
-// });
-//
-// router.get("/success" , function(req,res){
-//    res.render("success");
-// });
+
+router.get("/success" , function(req,res){
+   res.render("success");
+});
 
 router.get("/record", function(req, res){
   Student.find({}, function(err, posts){
