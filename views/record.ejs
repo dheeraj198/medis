@@ -5,15 +5,18 @@
     <title>Record</title>
   </head>
   <style>
-    .head{
-      align-items: center;
-
-
-
-    }
+  .text{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
     table {
         border-spacing: 0;
         border: 1px solid #ddd;
+        margin: 10px;
     }
     th,td {
         text-align: center;
@@ -35,7 +38,7 @@
 
   <body>
     <%- include("header") -%>
-    <h1 class="head"><center>Student Registration Record</center> </h1>
+    <div class="text"><center>Student Registration Record</center> </div>
 <div>
              <center>
                  <table border="2px">

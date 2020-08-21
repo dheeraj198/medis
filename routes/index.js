@@ -22,24 +22,24 @@ router.post('/info',function(req,res){
  });
  student.save(function(err){
    if (!err){
-       res.redirect("/library");
-   }
- });
-});
-router.get("/library" , function(req,res){
-   res.render("library");
-});
-router.post('/library',function(req,res){
- const student= new Student({
-   rollno:req.body.studentRollno,
-   branch:req.body.studentBranch
- });
- student.save(function(err){
-   if (!err){
        res.redirect("/acedmics");
    }
  });
 });
+// router.get("/library" , function(req,res){
+//    res.render("library");
+// });
+// router.post('/library',function(req,res){
+//  const student= new Student({
+//    rollno:req.body.studentRollno,
+//    branch:req.body.studentBranch
+//  });
+//  student.save(function(err){
+//    if (!err){
+//        res.redirect("/acedmics");
+//    }
+//  });
+// });
 
 router.get("/acedmics" , function(req,res){
    res.render("acedmics");
