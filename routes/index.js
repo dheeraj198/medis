@@ -46,8 +46,8 @@ router.get("/acedmics" , function(req,res){
 });
 router.post('/acedmics',function(req,res){
  const student= new Student({
-   DUAcd:req.body.DUAcadmics,
-   DUAcdAmt:req.body.acadmicsAmount
+   DUAcd:req.body.studentDUAcd,
+   DUAcdAmt:req.body.studentDUAcdAmt
  });
  student.save(function(err){
    if (!err){
@@ -61,8 +61,8 @@ router.get("/hostel" , function(req,res){
 });
 router.post('/hostel',function(req,res){
  const student= new Student({
-   DUHostel:req.body.DUHostel,
-   DUHostelAmt:req.body.hostelAmount
+   DUHostel:req.body.studentDUHostel,
+   DUHostelAmt:req.body.studentDUHostelAmt
  });
  student.save(function(err){
    if (!err){

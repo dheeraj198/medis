@@ -6,8 +6,9 @@
   </head>
   <style>
     .head{
-      align:center;
-      
+      align-items: center;
+
+
 
     }
     table {
@@ -23,7 +24,7 @@
         background-color: #ddd
     }
     th{
-      width:20%;
+
       align-item:center;
       cursor: pointer;
     }
@@ -34,18 +35,19 @@
 
   <body>
     <%- include("header") -%>
-    <h1 class="head">Student Registration Record </h1>
+    <h1 class="head"><center>Student Registration Record</center> </h1>
 <div>
              <center>
                  <table border="2px">
                    <tr>
-                     <th>Name</th>
-                     <th>Branch</th>
-                     <th>Roll Number</th>
-                     <th>Mobile Number </th>
-                     <th>Gmail</th>
-                     <th>DU Acadmics Number</th>
-                     <th>Acedmics Amount</th>
+                     <th width="15%">Name</th>
+                     <th width="10%">Branch</th>
+                     <th width="10%">Roll Number</th>
+                     <th width="12%">Mobile Number </th>
+                     <th width="15%">Gmail</th>
+                     <th width="12%">DU Acadmics Number</th>
+                     <th width="12%">DU Hostel Number</th>
+                     <!-- <th width="15%">More...</th> -->
 
                      </tr>
                      <%  posts.forEach(function(post){ %>
@@ -55,7 +57,7 @@
                              </td>
                              <td>
                                <%=post.branch%>
-                             </td>
+                             </td >
                              <td>
                                  <%=post.rollno%>
                              </td>
@@ -64,6 +66,12 @@
                              </td>
                              <td>
                                  <%=post.email%>
+                             </td>
+                             <td>
+                                 <%=post.DUAcd%>
+                             </td>
+                             <td>
+                                 <%=post.DUHostel%>
                              </td>
 
                              </tr>
