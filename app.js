@@ -15,12 +15,13 @@ require('./config/passport')(passport);
 //DB config
 //const db = require('./config/keys').MongoURI;
 
-//Mongoose connection
-// mongoose.connect(db,{useNewUrlParser: true ,useUnifiedTopology: true})
-// .then(() => console.log('MongoDB Connected'))
-// .catch(err => console.log(err));
+// mongoose.connect('mongodb+srv://dheeraj:Dheeraj123@@cluster0.gauld.mongodb.net/User',
+// {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 
-mongoose.connect('mongodb+srv://dheeraj:Dheeraj123@@cluster0.gauld.mongodb.net/User',
+mongoose.connect("mongodb://localhost:27017/medis",
 {
   useNewUrlParser: true,
   useUnifiedTopology: true

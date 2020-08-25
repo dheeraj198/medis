@@ -4,6 +4,8 @@ const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 const Student = require('../models/student');
+const AcedmicsFee = require('../models/acedmics');
+const HostelFee = require('../models/hostel');
 // login Page
 router.get('/', forwardAuthenticated, (req, res) => res.render('login'));
 
@@ -45,11 +47,11 @@ router.get("/acedmics" , function(req,res){
    res.render("acedmics");
 });
 router.post('/acedmics',function(req,res){
- const student= new Student({
+ const stdacd= new AcedmicsFee({
    DUAcd:req.body.studentDUAcd,
    DUAcdAmt:req.body.studentDUAcdAmt
  });
- student.save(function(err){
+ stdacd.save(function(err){
    if (!err){
        res.redirect("/hostel");
    }
@@ -60,11 +62,11 @@ router.get("/hostel" , function(req,res){
    res.render("hostel");
 });
 router.post('/hostel',function(req,res){
- const student= new Student({
+ const stdhos= new HostelFee({
    DUHostel:req.body.studentDUHostel,
    DUHostelAmt:req.body.studentDUHostelAmt
  });
- student.save(function(err){
+ stdhos.save(function(err){
    if (!err){
        res.redirect("/record");
    }
@@ -76,8 +78,39 @@ router.get("/success" , function(req,res){
 });
 
 router.get("/record", function(req, res){
-  Student.find({}, function(err, posts){
-    res.render("record", {posts: posts});
+  Student.find({}, function(err, students){
+    res.render("record", {students: students});
   });
 });
+
+router.get("/basicdetailsrecord", function(req, res){
+  Student.find({}, function(err, students){
+    res.render("basicdetailsrecord", {students: students});
+  });
+});
+
+router.get("/acedmicsrecord", function(req, res){
+  Student.find({}, function(err, students){
+    res.render("acedmicsrecord", {students: students});
+  });
+});
+router.get("/hostelrecord", function(req, res){
+  Student.find({}, function(err, students){
+    res.render("hostelrecord", {students: students});
+  });
+});
+
+router.get("/students/:studentId", function(req, res){
+
+const requestedStudentId = req.params.studentId;
+
+  Student.findOne({_id: requestedStudentId}, function(err, student){
+    res.render("post", {
+      name: student.name,
+      branch: student.branch
+    });
+  });
+
+});
+
 module.exports = router;
