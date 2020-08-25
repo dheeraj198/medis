@@ -15,17 +15,17 @@ require('./config/passport')(passport);
 //DB config
 //const db = require('./config/keys').MongoURI;
 
-// mongoose.connect('mongodb+srv://dheeraj:Dheeraj123@@cluster0.gauld.mongodb.net/User',
-// {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-
-mongoose.connect("mongodb://localhost:27017/medis",
+mongoose.connect('mongodb+srv://dheeraj:Dheeraj123@@cluster0.gauld.mongodb.net/User',
 {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
+// mongoose.connect("mongodb://localhost:27017/medis",
+// {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 
 const app = express();
 app.use(express.static("public"));
