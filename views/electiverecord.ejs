@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Record</title>
+  </head>
+  <style>
+          .text{
+              text-align: center;
+              font-size: 35px;
+              font-weight: 600;
+              color: #f5f5f5;
+              display: block;
+              text-align: center;
+              border-radius: 10px;
+              height: 7%;
+              width: 30%;
+              margin: 2%;
+              padding: 0.5%;
+              background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+            }
+        table {
+            border-spacing: 0;
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+        th,td {
+            text-align: center;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ddd
+        }
+        th{
+          align-item:center;
+          cursor: pointer;
+        }
+        .a1{
+          align-item:center;
+        }
+    </style>
+
+  <body>
+
+<%- include("header") -%>
+<div class="text"><center>Student Elective Subjects</center> </div>
+<div>
+<table border="2px">
+  <tr>
+    <th width="20%">Roll Number</th>
+    <th width="15%">Branch</th>
+    <th width="15%">Semester </th>
+    <th width="30%">Elective</th>
+    <th width="15%">complete Details</th>
+    </tr>
+    <%  electives.forEach(function(elective){ %>
+        <tr>
+          <td>
+              <%=elective.rollno%>
+          </td>
+            <td>
+              <%=elective.branch%>
+            </td >
+            <td>
+              <%=elective.semester%>
+            </td>
+            <td>
+                <%=elective.elective%>
+            </td>
+            <td><a href="/post1/<%=elective._id%>">More ...</a></td>
+            </tr>
+            <% }); %>
+</table>
+<%- include("footer") -%>
+</body>
+</html>

@@ -6,6 +6,7 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 const Student = require('../models/student');
 const AcedmicsFee = require('../models/acedmics');
 const HostelFee = require('../models/hostel');
+const Elective = require('../models/elective');
 // login Page
 router.get('/', forwardAuthenticated, (req, res) => res.render('login'));
 
@@ -23,6 +24,23 @@ router.post('/info',function(req,res){
    email:req.body.studentEmail
  });
  student.save(function(err){
+   if (!err){
+       res.redirect("/elective");
+   }
+ });
+});
+
+router.get("/elective" , function(req,res){
+   res.render("elective");
+});
+router.post('/elective',function(req,res){
+ const elective = new Elective({
+   rollno:req.body.studentRollno,
+   branch:req.body.branch,
+   semester:req.body.studentSemester,
+   elective:req.body.studentElective
+ });
+ elective.save(function(err){
    if (!err){
        res.redirect("/acedmics");
    }
@@ -47,11 +65,12 @@ router.get("/acedmics" , function(req,res){
    res.render("acedmics");
 });
 router.post('/acedmics',function(req,res){
- const stdacd= new AcedmicsFee({
+ const acd= new AcedmicsFee({
+   rollno:req.body.studentRollno,
    DUAcd:req.body.studentDUAcd,
    DUAcdAmt:req.body.studentDUAcdAmt
  });
- stdacd.save(function(err){
+ acd.save(function(err){
    if (!err){
        res.redirect("/hostel");
    }
@@ -62,11 +81,12 @@ router.get("/hostel" , function(req,res){
    res.render("hostel");
 });
 router.post('/hostel',function(req,res){
- const stdhos= new HostelFee({
+ const hos= new HostelFee({
+   rollno:req.body.studentRollno,
    DUHostel:req.body.studentDUHostel,
    DUHostelAmt:req.body.studentDUHostelAmt
  });
- stdhos.save(function(err){
+ hos.save(function(err){
    if (!err){
        res.redirect("/record");
    }
@@ -88,29 +108,46 @@ router.get("/basicdetailsrecord", function(req, res){
     res.render("basicdetailsrecord", {students: students});
   });
 });
+router.get("/electiverecord", function(req, res){
+  Elective.find({}, function(err, electives){
+    res.render("electiverecord", {electives: electives});
+  });
+});
 
 router.get("/acedmicsrecord", function(req, res){
-  Student.find({}, function(err, students){
-    res.render("acedmicsrecord", {students: students});
+  AcedmicsFee.find({}, function(err, acds){
+    res.render("acedmicsrecord", {acds: acds});
   });
 });
 router.get("/hostelrecord", function(req, res){
-  Student.find({}, function(err, students){
-    res.render("hostelrecord", {students: students});
+  HostelFee.find({}, function(err, hoss){
+    res.render("hostelrecord", {hoss: hoss});
   });
 });
 
+
 router.get("/students/:studentId", function(req, res){
-
 const requestedStudentId = req.params.studentId;
-
   Student.findOne({_id: requestedStudentId}, function(err, student){
     res.render("post", {
       name: student.name,
-      branch: student.branch
+      rollno:student.rollno,
+      mobileno:student.mobileno
     });
   });
-
 });
+
+router.get("/electives/:electiveId", function(req, res){
+const requestedElectiveId = req.params.electiveId;
+  Elective.findOne({_id: requestedElectiveId}, function(err, elective){
+    res.render("post1", {
+      rollno:elective.rollno,
+      branch: elective.branch,
+      semester:elective.semester,
+      elective:elective.elective
+    });
+  });
+});
+
 
 module.exports = router;

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Elective</title>
+  </head>
+  <style>
+.select-box{
+  width:300px;
+  position:relative;
+  }
+.select-box select{
+  height:42px;
+  padding:10px 15px;
+  line-height:18px;
+  font-size:16px;
+  border:2px solid #ccc;
+  border-radius:8px;
+  width:100%;
+  -webkit-appearance:none;
+  appearance:none;
+  }
+.select-box:after{
+  content : " ";
+  position: absolute;
+	right: 8px;
+	top: 70%;
+	margin-top: -4px;
+	border-top:8px solid green;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+  }
+.select-box select :focus{
+	border:2px solid green;
+}
+
+    </style>
+
+<body>
+
+<%- include("header") -%>
+  <div>
+    <ol class="progtrckr" data-progtrckr-steps="1">
+      <li class="progtrckr-done">Basic Details</li>
+      <li class="progtrckr-done">Elective Subject</li>
+      <li id = "status1" class="progtrckr-done">Academic Fee</li>
+      <li id = "status2" class="progtrckr-todo">Hostel Fee</li>
+      <li id = "status3" class="progtrckr-todo">Registration Done!!</li>
+    </ol>
+  </div>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Elective Subject</h2>
+                    <form action="/elective" method="POST" >
+                        <div class="input-group">
+                             <label class="label">Roll Number</label>
+                             <input class="input--style-4" type="text" name="studentRollno">
+                        </div>
+                        <div class="input-group">
+                          <div class ="select-box">
+                            <label class="label">Semester </label>
+                            <select id="input" name="studentSemester" onchange="random_function()"  required>
+                              <option value="">--Semester--</option>
+                              <option value="Semester 1">Semester 1</option>
+                              <option value="Semester 2">Semester 2</option>
+                              <option value="Semester 3">Semester 3</option>
+                              <option value="Semester 4">Semester 4</option>
+                              <option value="Semester 5">Semester 5</option>
+                              <option value="Semester 6">Semester 6</option>
+                              <option value="Semester 7">Semester 7</option>
+                              <option value="Semester 8">Semester 8 </option>
+				                   </select>
+                        </div>
+                        </div>
+
+                        <div class="input-group">
+                          <div class ="select-box">
+                            <label class="label">Branch</label>
+                            <select id="" name="branch" style="color:black" required>
+                              <option>--Select--</option>
+                              <option value="CSE">CSE</option>
+                              <option value="IT">IT</option>
+                              <option value="ECE">Ece</option>
+                            </select>
+                        </div>
+                        </div>
+
+
+                        <div class="input-group">
+                          <div class ="select-box">
+                            <label class="label">Elective</label>
+                            <select id="output" name="studentElective" style="color:black" required>
+                              <option>--Select--</option>
+                            </select>
+                        </div>
+                        </div>
+
+
+                        <div class="align">
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="next">Next</button>
+
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include("footer") -%>
+</body>
+<script type="text/javascript">
+
+    function random_function() {
+        var a = document.getElementById("input").value;
+        if (a == "") {
+            var arr = ["--Elective--"]
+        } else if (a === "Semester 5") {
+            var arr = ["Pattern Recognition", "Wireless Networks"];
+        } else if (a === "Semester 6") {
+            var arr = ["Deep Learning", "Data Analytics With python", "NLP", "DBMS"];
+        } else if (a === "Semester 7") {
+            var arr = ["Advance Operating System", "E-commerce & Digital Marketing", "Parallel Algorithms"];
+        } else if (a === "Semester 8") {
+            var arr = ["Machine Learning", "Artifical Intelligence", "Cloud Computing", "Mobile Database"];
+        }
+        var string = "";
+        for (i = 0; i < arr.length; i++) {
+            string = string + "<option value=" + arr[i] + ">" + arr[i] + "</option>";
+        }
+        string = "<select name='any_name'>" + string + "</select>";
+        document.getElementById("output").innerHTML = string;
+    }
+</script>
+</html>

@@ -63,18 +63,18 @@
                      <!-- <th width="15%">More...</th> -->
 
                      </tr>
-                     <%  students.forEach(function(student){ %>
+                     <%  acds.forEach(function(acd){ %>
                          <tr>
                              <td>
-                                 <%=student.rollno%>
+                                 <%=acd.rollno%>
                              </td>
                              <td>
-                               <%=student.DUAcd%>
+                               <%=acd.DUAcd%>
                              </td>
                              <td>
-                                 <%=student.DUAcdAmt%>
+                                 <%=acd.DUAcdAmt%>
                              </td>
-                             <td><a href="/post/<%=student.name%>">More ...</a></td>
+                             <td><a href="/post/<%=acd._id%>">More ...</a></td>
                              </tr>
                              <% }); %>
                  </table>

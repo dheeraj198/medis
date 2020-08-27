@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -53,7 +54,6 @@
                  <table border="2px">
                    <tr>
                      <th width="15%">Name</th>
-                     <th width="10%">Branch</th>
                      <th width="10%">Roll Number</th>
                      <th width="12%">Mobile Number </th>
                      <th width="15%">Gmail</th>
@@ -70,9 +70,6 @@
                                <%=student.name%>
                              </td>
                              <td>
-                               <%=student.branch%>
-                             </td >
-                             <td>
                                  <%=student.rollno%>
                              </td>
                              <td>
@@ -81,13 +78,16 @@
                              <td>
                                  <%=student.email%>
                              </td>
-                             <td><a href="/post/<%=student.name%>">More ...</a></td>
+                             <td><a href="/students/<%=student._id%>">More ...</a></td>
 
 
 
                              </tr>
                              <% }); %>
                  </table>
+                 <form>
+                  <input type="button" value="Print this page" onClick="window.print()">
+                  </form>
              </center>
          </div>
 

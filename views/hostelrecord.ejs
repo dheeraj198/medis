@@ -62,18 +62,18 @@
                      <!-- <th width="15%">More...</th> -->
 
                      </tr>
-                     <%  students.forEach(function(student){ %>
+                     <%  hoss.forEach(function(hos){ %>
                          <tr>
                              <td>
-                                 <%=student.rollno%>
+                                 <%=hos.rollno%>
                              </td>
                              <td>
-                               <%=student.DUHostel%>
+                               <%=hos.DUHostel%>
                              </td>
                              <td>
-                                 <%=student.DUHostelAmt%>
+                                 <%=hos.DUHostelAmt%>
                              </td>
-                             <td><a href="/post/<%=student.name%>">More ...</a></td>
+                             <td><a href="/post/<%=hos._id%>">More ...</a></td>
                              </tr>
                              <% }); %>
                  </table>
