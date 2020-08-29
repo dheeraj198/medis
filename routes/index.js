@@ -25,13 +25,12 @@ router.post('/info',function(req,res){
  });
  student.save(function(err){
    if (!err){
-       res.redirect("/elective");
+       res.render ('elective', {student :student});
    }
  });
 });
-
 router.get("/elective" , function(req,res){
-   res.render("elective");
+   res.render("elective",{student :student});
 });
 router.post('/elective',function(req,res){
  const elective = new Elective({
@@ -140,7 +139,7 @@ const requestedStudentId = req.params.studentId;
 router.get("/electives/:electiveId", function(req, res){
 const requestedElectiveId = req.params.electiveId;
   Elective.findOne({_id: requestedElectiveId}, function(err, elective){
-    res.render("post1", {
+    res.render("post", {
       rollno:elective.rollno,
       branch: elective.branch,
       semester:elective.semester,
