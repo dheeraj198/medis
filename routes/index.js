@@ -30,7 +30,7 @@ router.post('/info',function(req,res){
  });
 });
 router.get("/elective" , function(req,res){
-   res.render("elective",{student :student});
+   res.render("elective");
 });
 router.post('/elective',function(req,res){
  const elective = new Elective({
@@ -41,7 +41,7 @@ router.post('/elective',function(req,res){
  });
  elective.save(function(err){
    if (!err){
-       res.redirect("/acedmics");
+       res.render("acedmics",{elective :elective});
    }
  });
 });
@@ -71,7 +71,7 @@ router.post('/acedmics',function(req,res){
  });
  acd.save(function(err){
    if (!err){
-       res.redirect("/hostel");
+       res.render("hostel",{acd :acd});
    }
  });
 });

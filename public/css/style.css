@@ -166,7 +166,7 @@ input {
 
 .input--style-4 {
   line-height: 40px;
-  background: #fafafe;
+  background: #ebebe0;
   -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -477,6 +477,9 @@ ol.progtrckr li {
   display: inline-block;
   text-align: center;
   line-height: 3.5em;
+}
+ol.progtrckr{
+  min-width: 50%;
 }
 
 ol.progtrckr[data-progtrckr-steps="2"] li { width: 49%; }

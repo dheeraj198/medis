@@ -10,14 +10,17 @@
 <%- include("header") -%>
 <div class="text"><center>Student Elective Subjects</center> </div>
 <div>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
+</div>
+<div>
   <center>
-<table class="content-table">
+<table class="content-table" id="myTable">
   <tr>
-    <th width="20%">Roll Number</th>
-    <th width="15%">Branch</th>
-    <th width="15%">Semester </th>
+    <th width="10%">Roll Number</th>
+    <th width="20%">Branch</th>
+    <th width="20%">Semester </th>
     <th width="30%">Elective</th>
-    <th width="15%">complete Details</th>
+    <th width="15%">Complete Details</th>
     </tr>
     <%  electives.forEach(function(elective){ %>
         <tr>
@@ -39,6 +42,26 @@
 </table>
 </center>
 <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
+<script>
+function myFunction() {
+ var input, filter, table, tr, td, i, txtValue;
+ input = document.getElementById("myInput");
+ filter = input.value.toUpperCase();
+ table = document.getElementById("myTable");
+ tr = table.getElementsByTagName("tr");
+ for (i = 0; i < tr.length; i++) {
+   td = tr[i].getElementsByTagName("td")[0];
+   if (td) {
+     txtValue = td.textContent || td.innerText;
+     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+       tr[i].style.display = "";
+     } else {
+       tr[i].style.display = "none";
+     }
+   }
+ }
+}
+</script>
 <%- include("footer") -%>
 </body>
 </html>

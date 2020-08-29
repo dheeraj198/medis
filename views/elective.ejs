@@ -40,7 +40,7 @@
 
 <%- include("header") -%>
   <div>
-    <ol class="progtrckr" data-progtrckr-steps="1">
+    <ol class="progtrckr" data-progtrckr-steps="5">
       <li class="progtrckr-done">Basic Details</li>
       <li class="progtrckr-done">Elective Subject</li>
       <li id = "status1" class="progtrckr-done">Academic Fee</li>
@@ -125,6 +125,14 @@
             var arr = ["Advance Operating System", "E-commerce & Digital Marketing", "Parallel Algorithms"];
         } else if (a === "Semester 8") {
             var arr = ["Machine Learning", "Artifical Intelligence", "Cloud Computing", "Mobile Database"];
+        } else if (a === "Semester 1") {
+            var arr = ["None"];
+        } else if (a === "Semester 2") {
+            var arr = ["None"];
+        } else if (a === "Semester 3") {
+            var arr = ["None"];
+        } else if (a === "Semester 4") {
+            var arr = ["None"];
         }
         var string = "";
         for (i = 0; i < arr.length; i++) {

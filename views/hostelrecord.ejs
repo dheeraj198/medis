@@ -3,19 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title> Hostel Record</title>
-    <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
   </head>
+    <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
   <body>
     <%- include("header") -%>
     <div class="text"><center>Student Hostel Record</center> </div>
 <div>
+  <div>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
+  </div>
              <center>
-                 <table  class="content-table">
+                 <table id="myTable" class="content-table">
                    <tr>
-                     <th width="25%">Roll Number</th>
-                     <th width="25%">Du Acadmics Number </th>
-                     <th width="25%">Du Acadmics Amount</th>
-                     <th width="25%">Complete Details</th>
+                     <th width="10%">Roll Number</th>
+                     <th width="12%">Du Acadmics Number </th>
+                     <th width="15%">Du Acadmics Amount</th>
+                     <th width="15%">Complete Details</th>
                      </tr>
                      <%  hoss.forEach(function(hos){ %>
                          <tr>
@@ -34,7 +37,27 @@
                  </table>
              </center>
          </div>
-
+         <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
+         <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+        </script>
 <%- include("footer") -%>
 </body>
 </html>

@@ -5,11 +5,22 @@
     <title> Acedmics Record</title>
   </head>
     <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
+    <style>
+
+/* #myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+} */
+</style>
   <body>
     <%- include("header") -%>
     <div class="text"><center>Student Acedmics Record</center> </div>
 <div>
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<div>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
+</div>
              <center>
                  <table id="myTable" class="content-table">
                    <tr>
@@ -35,6 +46,7 @@
                  </table>
              </center>
          </div>
+         <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
          <script>
 function myFunction() {
   var input, filter, table, tr, td, i, txtValue;

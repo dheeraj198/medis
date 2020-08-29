@@ -120,3 +120,17 @@
     font-size: 25px;
     transform: translate(-50%, -50%);
   }
+/* Search Bar */
+
+#myInput {
+  margin-left: 2%;
+  width: 30%;
+  min-width: 30%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#myTable tr.header, #myTable tr:hover {
+  background-color: blue;
+}
