@@ -4,39 +4,65 @@
     <meta charset="utf-8">
     <title> Hostel Record</title>
   </head>
-<link rel="stylesheet" type="text/css" href="/css/tablecss.css">
-<style>
-html,body{
-  height: 100vh;
-  place-items: center;
-  background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(75deg,#e6f9ff  #d966ff 25%,#e6f9ff  );
+  <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
+  <style>
 
-}
-</style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    html,body{
+      display:grid;
+      height: 100vh;
+      place-items: center;
+      /* background: lightblue url("images/pic111.png") no-repeat fixed center; */
+      /* background-color: #E4E9FD; */
+      /* background-image: -webkit-linear-gradient(75deg,#e6f9ff  #d966ff 25%,#e6f9ff  );
+   */
+    }
+    .btn a {
+      position: relative;
+      color: #f5f5f5;
+      height: 70px;
+      width: 520px;
+      padding:10%;
+      display: block;
+      text-align: center;
+      border-radius: 10px;
+      text-decoration: none;
+      background-image: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+    }
+    .btn a:hover{
+      animation: rotate 0.4s linear infinite;
+    }
+    .btn a span{
+      height: 88%;
+      width: 96%;
+      background: #111;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding:5px;
+      border-radius: 6px;
+      line-height: 62px;
+      font-size: 25px;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+
   <body>
     <%- include("header") -%>
-    <div class="whole">
-    <div class="text1"><center>Student Registration Record</center> </div>
+    <div class="text"><center>Student Registration Record</center> </div>
 
     <div class="btn">
-          <center><a href="/basicdetailsrecord"><p>Student Basic Details</p></a></center>
+          <center><a href="/basicdetailsrecord"><span class="a1">Student Basic Details</span></a></center>
+          <center><a href="/electiverecord"><span class="a1">Student Elective Subject </span></a></center>
+          <center><a href="acedmicsrecord"><span class="a2">Student Acedmics Record</span></a></center>
+          <center><a href="hostelrecord"><span class="a3">Student Hostel Record</span></a></center>
     </div>
-
-    <div class="btn">
-          <center><a href="/electiverecord"><p>Student Elective-Subject Details</p></a></center>
-    </div>
-
-    <div class="btn">
-          <center><a href="acedmicsrecord"><p>Student Acedmics Record</p></a></center>
-    </div>
-
-    <div class="btn">
-          <center><a href="hostelrecord"><p>Student Hostel Record</p></a></center>
-    </div>
-
-
-
 
 <%- include("footer") -%>
 </body>
