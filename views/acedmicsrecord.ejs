@@ -3,23 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title> Acedmics Record</title>
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	</script>
+
   </head>
     <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
     <style>
-
-/* #myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-} */
 </style>
   <body>
     <%- include("header") -%>
     <div class="text"><center>Student Acedmics Record</center> </div>
 <div>
 <div>
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
+  <input type="text" id="myInput"  placeholder="Search for Roll Number..">
 </div>
              <center>
                  <table id="myTable" class="content-table">
@@ -30,6 +27,7 @@
                      <th width="15%">Complete Details</th>
                      </tr>
                      <%  acds.forEach(function(acd){ %>
+                       <tbody id="abc">
                          <tr>
                              <td>
                                  <%=acd.rollno%>
@@ -42,31 +40,24 @@
                              </td>
                              <td><a href="/post/<%=acd._id%>">More ...</a></td>
                              </tr>
+                           </tbody>
                              <% }); %>
                  </table>
              </center>
          </div>
          <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
-         <script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+
+   		<script>
+   			$(document).ready(function() {
+   				$("#myInput").on("keyup", function() {
+   					var value = $(this).val().toLowerCase();
+   					$("#abc tr").filter(function() {
+   						$(this).toggle($(this).text()
+   						.toLowerCase().indexOf(value) > -1)
+   					});
+   				});
+   			});
+   		</script>
 
 <%- include("footer") -%>
 </body>

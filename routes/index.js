@@ -18,7 +18,6 @@ router.get('/info', ensureAuthenticated, (req, res) =>
 router.post('/info',function(req,res){
  const student= new Student({
    name:req.body.studentName,
-   branch:req.body.studentBranch,
    rollno:req.body.studentRollno,
    mobileno:req.body.studentMobile,
    email:req.body.studentEmail
@@ -125,27 +124,48 @@ router.get("/hostelrecord", function(req, res){
 });
 
 
-router.get("/students/:studentId", function(req, res){
-const requestedStudentId = req.params.studentId;
-  Student.findOne({_id: requestedStudentId}, function(err, student){
+router.get("/students/:studentrollno", function(req, res){
+const requestedStudentId = req.params.studentrollno;
+  Student.findOne({rollno: requestedStudentId}, function(err, student){
+    Elective.findOne({rollno: requestedStudentId}, function(err, elective){
+      AcedmicsFee.findOne({rollno: requestedStudentId}, function(err, acd){
+        HostelFee.findOne({rollno: requestedStudentId}, function(err, hos){
+
+
     res.render("post", {
       name: student.name,
       rollno:student.rollno,
-      mobileno:student.mobileno
+      mobileno:student.mobileno,
+      branch: elective.branch,
+      semester:elective.semester,
+      elective:elective.elective,
+      DUAcd:acd.DUAcd,
+      DUAcdAmt:acd.DUAcdAmt,
+      DUHostel:hos.DUHostel,
+      DUHostelAmt:hos.DUHostelAmt
+
+    });
+    });
     });
   });
 });
+});
+router.get("/electives/:electiverollno", function(req, res){
+const requestedElectiveId = req.params.electiverollno;
+Student.findOne({rollno: requestedElectiveId}, function(err, student){
+  Elective.findOne({rollno: requestedElectiveId}, function(err, elective){
 
-router.get("/electives/:electiveId", function(req, res){
-const requestedElectiveId = req.params.electiveId;
-  Elective.findOne({_id: requestedElectiveId}, function(err, elective){
-    res.render("post", {
-      rollno:elective.rollno,
-      branch: elective.branch,
-      semester:elective.semester,
-      elective:elective.elective
-    });
+
+  res.render("post", {
+    name: student.name,
+    rollno:student.rollno,
+    mobileno:student.mobileno,
+    branch: elective.branch,
+    semester:elective.semester,
+    elective:elective.elective
   });
+});
+});
 });
 
 

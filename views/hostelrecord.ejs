@@ -5,6 +5,10 @@
     <title> Hostel Record</title>
   </head>
     <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	</script>
+
   <body>
     <%- include("header") -%>
     <div class="text"><center>Student Hostel Record</center> </div>
@@ -21,6 +25,7 @@
                      <th width="15%">Complete Details</th>
                      </tr>
                      <%  hoss.forEach(function(hos){ %>
+                       <tbody id="abc">
                          <tr>
                              <td>
                                  <%=hos.rollno%>
@@ -39,25 +44,17 @@
          </div>
          <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
          <script>
-        function myFunction() {
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-        </script>
+     			$(document).ready(function() {
+     				$("#myInput").on("keyup", function() {
+     					var value = $(this).val().toLowerCase();
+     					$("#abc tr").filter(function() {
+     						$(this).toggle($(this).text()
+     						.toLowerCase().indexOf(value) > -1)
+     					});
+     				});
+     			});
+     		</script>
+
 <%- include("footer") -%>
 </body>
 </html>

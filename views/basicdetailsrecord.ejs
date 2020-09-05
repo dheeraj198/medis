@@ -6,6 +6,10 @@
     <title>Record</title>
       <link rel="stylesheet" type="text/css" href="/css/tablecss.css">
   </head>
+  <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+
   <body>
     <%- include("header") -%>
     <div class="text"><center>Student Basic Details</center> </div>
@@ -23,6 +27,7 @@
                      <th width="15%">Complete Details</th>
                      </tr>
                      <%  students.forEach(function(student){ %>
+                       <tbody id="abc">
                          <tr>
                              <td>
                                <%=student.name%>
@@ -36,11 +41,13 @@
                              <td>
                                  <%=student.email%>
                              </td>
-                             <td><a href="/students/<%=student._id%>">More ...</a></td>
+                             <td><a href="/students/<%=student.rollno%>">More ...</a></td>
+
 
 
 
                              </tr>
+                           </tbody>
                              <% }); %>
                  </table>
                  <form>
@@ -49,26 +56,17 @@
              </center>
          </div>
          <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
- <script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+         <script>
+      			$(document).ready(function() {
+      				$("#myInput").on("keyup", function() {
+      					var value = $(this).val().toLowerCase();
+      					$("#abc tr").filter(function() {
+      						$(this).toggle($(this).text()
+      						.toLowerCase().indexOf(value) > -1)
+      					});
+      				});
+      			});
+      		</script>
 <%- include("footer") -%>
 </body>
 </html>

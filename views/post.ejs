@@ -1,15 +1,75 @@
 
-<%- include("header"); -%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Student Record</title>
+</head>
+<body class="text-center">
+  <%- include("header"); -%>
+
+    <div class="text"><center><h1>Appointment Details</h1></center> </div>
+    <br>
+<div>
+             <center>
+                 <table >
+                  <table style="width:50%" border="2px">
+                    <tr>
+                      <th>Name:</th>
+                      <td><%=name%></td>
+                    </tr>
+                    <tr>
+                      <th>Roll Number:</th>
+                      <td><%=rollno%></td>
+                    </tr>
+                    <tr>
+                      <th>Branch:</th>
+                      <td><%=branch%></td>
+                    </tr>
+                    <tr>
+                      <th>Semester</th>
+                      <td><%=semester%></td>
+                    </tr>
+                    <tr>
+                        <th>Mobile:</th>
+                        <td><%=  mobileno%></td>
+                      </tr>
+            <hr>      <tr>
+                          <th>Elective:</th>
+                          <td><%=  elective%></td>
+                        </tr>
+            <hr>            <tr>
+                          <th>DU Acadmics Number:</th>
+                          <td><%=  DUAcd%></td>
+                        </tr>
+                        <tr>
+                            <th>DU Acadmics Amount:</th>
+                            <td><%=  DUAcdAmt%></td>
+                        </tr>
+
+      <hr>              <tr>
+                            <th>DU Hostel Number:</th>
+                            <td><%=  DUHostel%></td>
+                        </tr>
+
+                              <tr>
+                                  <th>DU hostel Amount:</th>
+                                  <td><%=  DUHostelAmt%></td>
+                                </tr>
 
 
-    <h1><%=name%></h1>
-    <h1><%=rollno%></h1>
-
-<hr>
-<h1><%=rollno%></h1>
-<p><%=branch%></p>
-<h1><%=semester%></h1>
-<h1><%=elective%></h1>
 
 
-<%- include("footer"); -%>
+
+                 </table>
+                 <br><br>
+                 <a class="btn btn-success" href="javascript:window.print()">PRINT </a>
+             </center>
+         </div>
+         <%- include("footer"); -%>
+</body>
+</html>

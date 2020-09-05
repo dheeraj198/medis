@@ -18,10 +18,12 @@
                   <h2 class="title">Register</h2>
 									<form class="box" action="/user/register" method="POST">
 										<!-- <h1>Login</h1> -->
-										<input type="text" name="name" id="name" placeholder="Enter Name" value="<%= typeof name != 'undefined' ? name : '' %>" autocomplete="off" pattern="[a-zA-Z]+([\s][a-zA-Z]+)*" title="Only alphabets(a-z,A-Z) and space(  ) allowed E.g. Rajesh Kumar" required>
-										<input type="text" name="email" id="email" placeholder="Enter Email" value="<%= typeof email != 'undefined' ? email : '' %>"  autocomplete="off" required>
-										<input type="password" name="password" id="password" placeholder="Create Password" value="<%= typeof password != 'undefined' ? password : '' %>" autocomplete="off"  required>
-										<input type="password" name="password2" id="password2" placeholder="Confirm Password" value="<%= typeof password != 'undefined' ? password : '' %>" autocomplete="off"  required>
+										<input type="text" name="name" id="name" placeholder=" Enter Name" autocomplete="off" pattern="[a-zA-Z]+([\s][a-zA-Z]+)*" title="Only alphabets(a-z,A-Z) and space(  ) allowed E.g. John Jordan" required>
+										<input type="text" name="email" id="email" placeholder="Enter Email"  pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" title="Enter a valid E-mail address, For e.g. John@gmail.com" required>
+										<input type="password" name="password" id="password"  placeholder=" Enter Password" autocomplete="off" maxlength="20" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}" title="Atleast: 8 characters,one UPPERCASE alphabet(A-Z),one lowercase alphabet(a-z),one number(0-9) and one special character(@$!%*?&)"
+                                required>
+										<input type="password" name="password2" id="password2" placeholder="Confirm Password"  autocomplete="off" maxlength="20" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}" title="Atleast: 8 characters,one UPPERCASE alphabet(A-Z),one lowercase alphabet(a-z),one number(0-9) and one special character(@$!%*?&)"
+                                required>
 										<button type="submit" class="btn btn-primary btn-block">Register</button>
 									</form>
                   <p class="lead mt-4">Have An Account? <a href="/user/login">Login</a></p>
