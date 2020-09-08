@@ -9,6 +9,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
+
 // Passport Config
 require('./config/passport')(passport);
 
@@ -29,6 +30,7 @@ mongoose.connect('mongodb+srv://dheeraj:Dheeraj123@@cluster0.gauld.mongodb.net/U
 
 const app = express();
 app.use(express.static("public"));
+app.use('/uploads',express.static('uploads'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.set("view engine",'ejs');

@@ -3,6 +3,32 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
+const multer = require('multer');
+const upload = multer({dest: 'uploads/'});
+
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, './uploads/');
+	},
+	filename: (req, file, cb)= > cb(null, Date.now() + file.originalname);  instead of   cb(null, new Date().toISOString() + file.originalname);
+	}
+});
+const fileFilter=(req,file,cb)=>{
+  if(file.mimetype==="image/jpeg" || file.mimetype === "image/png"){
+    cb(null,true);
+  }else{
+    cb(null,false);
+  }
+};
+const upload = multer({
+   storage: storage,
+   limits:{
+     fileSize:1024*1024*5
+   },
+   fileFilter:fileFilter
+
+  });
+
 const Student = require('../models/student');
 const AcedmicsFee = require('../models/acedmics');
 const HostelFee = require('../models/hostel');
@@ -62,11 +88,12 @@ router.post('/elective',function(req,res){
 router.get("/acedmics" , function(req,res){
    res.render("acedmics");
 });
-router.post('/acedmics',function(req,res){
+router.post('/acedmics', upload.single('Image') ,function(req,res){
  const acd= new AcedmicsFee({
    rollno:req.body.studentRollno,
    DUAcd:req.body.studentDUAcd,
-   DUAcdAmt:req.body.studentDUAcdAmt
+   DUAcdAmt:req.body.studentDUAcdAmt,
+   Image:req.file.path
  });
  acd.save(function(err){
    if (!err){
@@ -154,6 +181,8 @@ router.get("/electives/:electiverollno", function(req, res){
 const requestedElectiveId = req.params.electiverollno;
 Student.findOne({rollno: requestedElectiveId}, function(err, student){
   Elective.findOne({rollno: requestedElectiveId}, function(err, elective){
+    AcedmicsFee.findOne({rollno: requestedElectiveId}, function(err, acd){
+      HostelFee.findOne({rollno: requestedElectiveId}, function(err, hos){
 
 
   res.render("post", {
@@ -162,7 +191,65 @@ Student.findOne({rollno: requestedElectiveId}, function(err, student){
     mobileno:student.mobileno,
     branch: elective.branch,
     semester:elective.semester,
-    elective:elective.elective
+    elective:elective.elective,
+    DUAcd:acd.DUAcd,
+    DUAcdAmt:acd.DUAcdAmt,
+    DUHostel:hos.DUHostel,
+    DUHostelAmt:hos.DUHostelAmt
+  });
+  });
+  });
+});
+});
+});
+
+router.get("/acds/:acdrollno", function(req, res){
+const requestedAcedmicsFeeId = req.params.acdrollno;
+  Student.findOne({rollno: requestedAcedmicsFeeId}, function(err, student){
+    Elective.findOne({rollno: requestedAcedmicsFeeId}, function(err, elective){
+      AcedmicsFee.findOne({rollno: requestedAcedmicsFeeId}, function(err, acd){
+        HostelFee.findOne({rollno: requestedAcedmicsFeeId}, function(err, hos){
+
+
+    res.render("post", {
+      name: student.name,
+      rollno:student.rollno,
+      mobileno:student.mobileno,
+      branch: elective.branch,
+      semester:elective.semester,
+      elective:elective.elective,
+      DUAcd:acd.DUAcd,
+      DUAcdAmt:acd.DUAcdAmt,
+      DUHostel:hos.DUHostel,
+      DUHostelAmt:hos.DUHostelAmt
+
+    });
+    });
+    });
+  });
+});
+});
+router.get("/hoss/:hosrollno", function(req, res){
+const requestedHostelFeeId = req.params.hosrollno;
+Student.findOne({rollno: requestedHostelFeeId}, function(err, student){
+  Elective.findOne({rollno: requestedHostelFeeId}, function(err, elective){
+    AcedmicsFee.findOne({rollno: requestedHostelFeeId}, function(err, acd){
+      HostelFee.findOne({rollno: requestedHostelFeeId}, function(err, hos){
+
+
+  res.render("post", {
+    name: student.name,
+    rollno:student.rollno,
+    mobileno:student.mobileno,
+    branch: elective.branch,
+    semester:elective.semester,
+    elective:elective.elective,
+    DUAcd:acd.DUAcd,
+    DUAcdAmt:acd.DUAcdAmt,
+    DUHostel:hos.DUHostel,
+    DUHostelAmt:hos.DUHostelAmt
+  });
+  });
   });
 });
 });
