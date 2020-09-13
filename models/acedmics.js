@@ -9,9 +9,11 @@ const acedmicsfeeSchema = new mongoose.Schema({
   DUAcdAmt: {
     type: String,
   },
-  Image:{
-    type:String,
-  }
+  img:
+	{
+		data: Buffer,
+		contentType: String
+	}
 });
 const AcedmicsFee = mongoose.model('AcedmicsFee', acedmicsfeeSchema);
 

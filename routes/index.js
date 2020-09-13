@@ -1,16 +1,30 @@
 
 const express = require('express');
 const router = express.Router();
+var bodyParser = require('body-parser');
+const multer = require('multer');
+
+var fs = require('fs');
+var path = require('path');
+require('dotenv/config');
+
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
-const multer = require('multer');
-const upload = multer({dest: 'uploads/'});
+// const upload = multer({dest: 'uploads/'});
 
-const storage = multer.diskStorage({
+// const storage = multer.diskStorage({
+// 	destination: (req, file, cb) => {
+// 		cb(null, './uploads/');
+// 	},
+// 	filename:  cb(null, new Date().toISOString() + file.originalname)
+// 	}
+// });
+var storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, './uploads/');
+		cb(null, 'uploads')
 	},
-	filename: (req, file, cb)= > cb(null, Date.now() + file.originalname);  instead of   cb(null, new Date().toISOString() + file.originalname);
+	filename: (req, file, cb) => {
+		cb(null, file.fieldname + '-' + Date.now())
 	}
 });
 const fileFilter=(req,file,cb)=>{
@@ -88,12 +102,29 @@ router.post('/elective',function(req,res){
 router.get("/acedmics" , function(req,res){
    res.render("acedmics");
 });
+// router.post('/acedmics', upload.single('Image') ,function(req,res){
+//  const acd= new AcedmicsFee({
+//    rollno:req.body.studentRollno,
+//    DUAcd:req.body.studentDUAcd,
+//    DUAcdAmt:req.body.studentDUAcdAmt,
+//    Image:req.file.path
+//  });
+//  acd.save(function(err){
+//    if (!err){
+//        res.render("hostel",{acd :acd});
+//    }
+//  });
+// });
 router.post('/acedmics', upload.single('Image') ,function(req,res){
  const acd= new AcedmicsFee({
    rollno:req.body.studentRollno,
    DUAcd:req.body.studentDUAcd,
    DUAcdAmt:req.body.studentDUAcdAmt,
-   Image:req.file.path
+  //  Image:req.file.path
+  Image: {
+    data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+    contentType: 'image/png'
+  }
  });
  acd.save(function(err){
    if (!err){
