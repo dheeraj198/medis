@@ -18,13 +18,13 @@
 <div>
   <input type="text" id="myInput"  placeholder="Search for Roll Number..">
 </div>
-             <center>
-                 <table id="myTable" class="content-table">
+<div class="container">
+             <table class="table table-bordered" id="myTable">
                    <tr>
-                     <th width="10%">Roll Number</th>
-                     <th width="12%">Du Acadmics Number </th>
-                     <th width="15%">Acadmics Amount</th>
-                     <th width="15%">Complete Details</th>
+                     <th >Roll Number</th>
+                     <th >Du Acadmics Number </th>
+                     <th >Acadmics Amount</th>
+                     <th >Complete Details</th>
                      </tr>
                      <%  acds.forEach(function(acd){ %>
                        <tbody id="abc">
@@ -45,7 +45,7 @@
                  </table>
              </center>
          </div>
-         <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
+         <center><a class="btn btn-success" href="javascript:window.print()">PRINT </a></center>
 
    		<script>
    			$(document).ready(function() {

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,37 +33,31 @@
     <div class="row justify-content-center custom-margin">
       <div class="col-sm-6 col-md-6">
         <%- include("partials/messages") -%>
-        <form action="/user/register" method="POST" class="shadow-lg p-4" >
-          <!-- <div class="form-group">
-            <img src="/images/iiitulogo.png" alt="" height="70px" width="70px">
-            <label for="" class="text-center pl-5 font-weight-bold">INDIAN INSTITUTE OF INFORMATION TECHNOLOGY,UNA</label>
-            <hr> -->
-
-            <div><label for="" class="text-center mt-3 font-weight-bold"><h3>Register</h3></label></div>
-
+        <form action="/auser/aregister" method="POST" class="shadow-lg p-4" >
+          <div><label for="" class="text-center mt-3 font-weight-bold"><h3>Register</h3></label>
             <label><h6>Name </h6></label>
-            <input name="name" id="name"  class="form-control" >
-
+            <input name="name" id="aname"  class="form-control" >
+          </div>
           <div class="form-group">
             <label for="email" class="mt-3"><h6>Email</h6></label>
-            <input type="email" class="form-control" name="email" id="email" >
+            <input type="email" class="form-control" name="aemail" id="email" >
           </div>
 
           <div class="form-group">
           <label for="pass"><h6>Password</h6></label>
-          <input type="password" class="form-control"  name="password" id="password">
+          <input type="password" class="form-control"  name="apassword" id="password">
           </div>
 
           <div class="form-group">
           <label for="pass"><h6>Confirm Password</h6></label>
-          <input type="password" class="form-control"  name="password2" id="password2">
+          <input type="password" class="form-control"  name="apassword2" id="password2">
           </div>
 
           <button type="submit" class="btn btn-outline-primary mt-3 mb-3 btn-block shadow-sm font-weight-bold">Register</button>
 
           <label class="mt-2"><strong>Already Registred?</strong></label>
           <div class="">
-            <a href="/user/login">click here </a> </div>
+            <a href="/auser/alogin">click here </a> </div>
         </form>
 
       </div>

@@ -1,5 +1,5 @@
 const express = require('express');
-//const expressLayouts = require('express-ejs-layouts');
+// const expressLayouts = require('express-ejs-layouts');
 const request= require("request");
 const https=require("https");
 const bodyParser=require("body-parser");
@@ -33,6 +33,8 @@ app.use(express.static("public"));
 app.use('/uploads',express.static('uploads'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+
+// app.use(expressLayouts);
 app.set("view engine",'ejs');
 
 
@@ -62,6 +64,10 @@ app.use(function(req, res, next) {
 //Routes
 app.use('/',require('./routes/index.js'));
 app.use('/user',require('./routes/user.js'));
+
+//Admin Routes
+app.use('/',require('./routes/aindex.js'));
+app.use('/auser',require('./routes/auser.js'));
 
 
 const PORT = process.env.PORT || 3000;

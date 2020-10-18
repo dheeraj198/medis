@@ -1,23 +1,23 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <title>Student Record</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .custom-margin {
+         margin-top: 8vh;
+      }
+   </style>
+  <title>Login</title>
 </head>
-<body class="text-center">
-  <%- include("header"); -%>
 
-    <div class="text"><center><h1>Appointment Details</h1></center> </div>
+<body>
+<%- include("header") -%>
+    <div class=" text-center mt-3 pt-2 pb-2"><center><h1>IIITU<%=rollno%></h1></center> </div>
     <br>
-<div>
-             <center>
-                 <table >
-                  <table style="width:50%" border="2px">
+<div class="container">
+                 <table class="table table-bordered" >
                     <tr>
                       <th>Name:</th>
                       <td><%=name%></td>
@@ -38,11 +38,11 @@
                         <th>Mobile:</th>
                         <td><%=  mobileno%></td>
                       </tr>
-            <hr>      <tr>
+                   <tr>
                           <th>Elective:</th>
                           <td><%=  elective%></td>
                         </tr>
-            <hr>            <tr>
+                  <tr>
                           <th>DU Acadmics Number:</th>
                           <td><%=  DUAcd%></td>
                         </tr>
@@ -51,7 +51,7 @@
                             <td><%=  DUAcdAmt%></td>
                         </tr>
 
-      <hr>              <tr>
+                   <tr>
                             <th>DU Hostel Number:</th>
                             <td><%=  DUHostel%></td>
                         </tr>
@@ -66,9 +66,10 @@
 
 
                  </table>
+               </div>
                  <br><br>
-                 <a class="btn btn-success" href="javascript:window.print()">PRINT </a>
-             </center>
+                 <center><a class="btn btn-success" href="javascript:window.print()">PRINT </a>
+                 </center>
          </div>
          <%- include("footer"); -%>
 </body>

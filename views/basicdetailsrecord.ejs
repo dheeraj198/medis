@@ -16,15 +16,14 @@
     <div>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
     </div>
-    <div>
-             <center>
-                 <table class="content-table" id="myTable">
+    <div class="container">
+                 <table class="table table-bordered" id="myTable">
                    <tr>
-                     <th width="15%">Name</th>
-                     <th width="10%">Roll Number</th>
-                     <th width="12%">Mobile Number </th>
-                     <th width="15%">Gmail</th>
-                     <th width="15%">Complete Details</th>
+                     <th >Name</th>
+                     <th >Roll Number</th>
+                     <th >Mobile Number </th>
+                     <th >Gmail</th>
+                     <th >Complete Details</th>
                      </tr>
                      <%  students.forEach(function(student){ %>
                        <tbody id="abc">
@@ -50,12 +49,10 @@
                            </tbody>
                              <% }); %>
                  </table>
-                 <form>
-                  <input type="button" value="Print this page" onClick="window.print()">
+                 <center><a class="btn btn-success" href="javascript:window.print()">PRINT </a></center>
                   </form>
-             </center>
          </div>
-         <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
+         <div class="print"></div>
          <script>
       			$(document).ready(function() {
       				$("#myInput").on("keyup", function() {

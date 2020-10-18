@@ -121,10 +121,10 @@ router.post('/acedmics', upload.single('Image') ,function(req,res){
    DUAcd:req.body.studentDUAcd,
    DUAcdAmt:req.body.studentDUAcdAmt,
   //  Image:req.file.path
-  Image: {
-    data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-    contentType: 'image/png'
-  }
+  // Image: {
+  //   data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+  //   contentType: 'image/png'
+  // }
  });
  acd.save(function(err){
    if (!err){
@@ -144,7 +144,7 @@ router.post('/hostel',function(req,res){
  });
  hos.save(function(err){
    if (!err){
-       res.redirect("/record");
+       res.redirect("/success");
    }
  });
 });
@@ -153,138 +153,8 @@ router.get("/success" , function(req,res){
    res.render("success");
 });
 
-router.get("/record", function(req, res){
-  Student.find({}, function(err, students){
-    res.render("record", {students: students});
-  });
+
+router.get("/dashboard" , function(req,res){
+   res.render("dashboard");
 });
-
-router.get("/basicdetailsrecord", function(req, res){
-  Student.find({}, function(err, students){
-    res.render("basicdetailsrecord", {students: students});
-  });
-});
-router.get("/electiverecord", function(req, res){
-  Elective.find({}, function(err, electives){
-    res.render("electiverecord", {electives: electives});
-  });
-});
-
-router.get("/acedmicsrecord", function(req, res){
-  AcedmicsFee.find({}, function(err, acds){
-    res.render("acedmicsrecord", {acds: acds});
-  });
-});
-router.get("/hostelrecord", function(req, res){
-  HostelFee.find({}, function(err, hoss){
-    res.render("hostelrecord", {hoss: hoss});
-  });
-});
-
-
-router.get("/students/:studentrollno", function(req, res){
-const requestedStudentId = req.params.studentrollno;
-  Student.findOne({rollno: requestedStudentId}, function(err, student){
-    Elective.findOne({rollno: requestedStudentId}, function(err, elective){
-      AcedmicsFee.findOne({rollno: requestedStudentId}, function(err, acd){
-        HostelFee.findOne({rollno: requestedStudentId}, function(err, hos){
-
-
-    res.render("post", {
-      name: student.name,
-      rollno:student.rollno,
-      mobileno:student.mobileno,
-      branch: elective.branch,
-      semester:elective.semester,
-      elective:elective.elective,
-      DUAcd:acd.DUAcd,
-      DUAcdAmt:acd.DUAcdAmt,
-      DUHostel:hos.DUHostel,
-      DUHostelAmt:hos.DUHostelAmt
-
-    });
-    });
-    });
-  });
-});
-});
-router.get("/electives/:electiverollno", function(req, res){
-const requestedElectiveId = req.params.electiverollno;
-Student.findOne({rollno: requestedElectiveId}, function(err, student){
-  Elective.findOne({rollno: requestedElectiveId}, function(err, elective){
-    AcedmicsFee.findOne({rollno: requestedElectiveId}, function(err, acd){
-      HostelFee.findOne({rollno: requestedElectiveId}, function(err, hos){
-
-
-  res.render("post", {
-    name: student.name,
-    rollno:student.rollno,
-    mobileno:student.mobileno,
-    branch: elective.branch,
-    semester:elective.semester,
-    elective:elective.elective,
-    DUAcd:acd.DUAcd,
-    DUAcdAmt:acd.DUAcdAmt,
-    DUHostel:hos.DUHostel,
-    DUHostelAmt:hos.DUHostelAmt
-  });
-  });
-  });
-});
-});
-});
-
-router.get("/acds/:acdrollno", function(req, res){
-const requestedAcedmicsFeeId = req.params.acdrollno;
-  Student.findOne({rollno: requestedAcedmicsFeeId}, function(err, student){
-    Elective.findOne({rollno: requestedAcedmicsFeeId}, function(err, elective){
-      AcedmicsFee.findOne({rollno: requestedAcedmicsFeeId}, function(err, acd){
-        HostelFee.findOne({rollno: requestedAcedmicsFeeId}, function(err, hos){
-
-
-    res.render("post", {
-      name: student.name,
-      rollno:student.rollno,
-      mobileno:student.mobileno,
-      branch: elective.branch,
-      semester:elective.semester,
-      elective:elective.elective,
-      DUAcd:acd.DUAcd,
-      DUAcdAmt:acd.DUAcdAmt,
-      DUHostel:hos.DUHostel,
-      DUHostelAmt:hos.DUHostelAmt
-
-    });
-    });
-    });
-  });
-});
-});
-router.get("/hoss/:hosrollno", function(req, res){
-const requestedHostelFeeId = req.params.hosrollno;
-Student.findOne({rollno: requestedHostelFeeId}, function(err, student){
-  Elective.findOne({rollno: requestedHostelFeeId}, function(err, elective){
-    AcedmicsFee.findOne({rollno: requestedHostelFeeId}, function(err, acd){
-      HostelFee.findOne({rollno: requestedHostelFeeId}, function(err, hos){
-
-
-  res.render("post", {
-    name: student.name,
-    rollno:student.rollno,
-    mobileno:student.mobileno,
-    branch: elective.branch,
-    semester:elective.semester,
-    elective:elective.elective,
-    DUAcd:acd.DUAcd,
-    DUAcdAmt:acd.DUAcdAmt,
-    DUHostel:hos.DUHostel,
-    DUHostelAmt:hos.DUHostelAmt
-  });
-  });
-  });
-});
-});
-});
-
-
 module.exports = router;

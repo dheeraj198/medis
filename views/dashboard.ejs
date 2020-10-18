@@ -1,3 +1,89 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.name %></p>
-<a href="/user/logout" class="btn btn-secondary">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .custom-margin {
+         margin-top: 8vh;
+      }
+
+   </style>
+  <title>Login</title>
+</head>
+
+<body>
+<%- include("header") -%>
+<div class="container ">
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-lg-3 col-xs-12 " align="center">
+      <img src="/images/iiitulogo.png" alt="" height="160px" width="160px" align="center" class="logo">
+    </div>
+    <div class="col-lg-9 " style="margin-top: 2%;">
+      <h3 class="main-heading" onload="">Indian Institute of Information Technology Una</h3>
+      <h4 class="hindi-title"><span> भारतीय सूचना प्रौद्योगिकी संस्थान ऊना  </span></h4>
+      <h4 class="secondary-title" >(An Institute Of National Importance Under MHRD)</h4>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="">
+  <div class="row mx-5 text-center">
+    <div class="col-lg-3 col-xs-12 mt-5">
+      <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+        <div class="card-header">Section 1</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h4>Student Details</h4>
+            </div>
+
+          <a class="btn text-white" href="request.php">View</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-12 mt-5">
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header">Section-2</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h4>Elective</h4>
+            </div>
+
+          <a class="btn text-white" href="work.php">View</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-12 mt-5">
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header">Section-3 </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h4>Academic Fee</h4>
+            </div>
+
+          <a class="btn text-white" href="work.php">View</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-12 mt-5">
+      <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">Section-4</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h4>Student Details</h4>
+            </div>
+
+          <a class="btn text-white" href="technician.php">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/all.min.js"></script>
+</body>
+
+</html>

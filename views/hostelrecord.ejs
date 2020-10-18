@@ -16,13 +16,13 @@
   <div>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
   </div>
-             <center>
-                 <table id="myTable" class="content-table">
+  <div class="container">
+        <table class="table table-bordered" id="myTable">
                    <tr>
-                     <th width="10%">Roll Number</th>
-                     <th width="12%">Du Acadmics Number </th>
-                     <th width="15%">Du Acadmics Amount</th>
-                     <th width="15%">Complete Details</th>
+                     <th >Roll Number</th>
+                     <th >Du Acadmics Number </th>
+                     <th >Du Acadmics Amount</th>
+                     <th >Complete Details</th>
                      </tr>
                      <%  hoss.forEach(function(hos){ %>
                        <tbody id="abc">
@@ -40,9 +40,9 @@
                              </tr>
                              <% }); %>
                  </table>
-             </center>
+             </div>
          </div>
-         <div class="print"><a class="btn btn-success" href="javascript:window.print()">PRINT </a></div>
+         <center><a class="btn btn-success" href="javascript:window.print()">PRINT </a></center>
          <script>
      			$(document).ready(function() {
      				$("#myInput").on("keyup", function() {

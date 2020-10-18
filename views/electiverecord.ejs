@@ -16,15 +16,14 @@
 <div>
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Roll Number.." title="Type in a name">
 </div>
-<div>
-  <center>
-<table class="content-table" id="myTable">
+<div class="container">
+   <table class="table table-bordered" id="myTable">
   <tr>
-    <th width="10%">Roll Number</th>
-    <th width="20%">Branch</th>
-    <th width="20%">Semester </th>
-    <th width="30%">Elective</th>
-    <th width="15%">Complete Details</th>
+    <th >Roll Number</th>
+    <th >Branch</th>
+    <th>Semester </th>
+    <th >Elective</th>
+    <th >Complete Details</th>
     </tr>
     <%  electives.forEach(function(elective){ %>
       <tbody id="abc">
@@ -42,7 +41,7 @@
                 <%=elective.elective%>
             </td>
             <td><a href="/electives/<%=elective.rollno%>">More ...</a></td>
-            
+
             </tr>
           </tbody>
             <% }); %>

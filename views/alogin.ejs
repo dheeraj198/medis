@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,39 +31,32 @@
     <div class="row justify-content-center custom-margin">
       <div class="col-sm-6 col-md-6">
       <%- include("partials/messages") -%>
-        <form action="/user/login" method="POST" class="shadow-lg p-4">
-          <!-- <div class="form-group">
-            <img src="/images/iiitulogo.png" alt="" height="70px" width="70px">
-            <label for="" class="text-center pl-5 font-weight-bold">INDIAN INSTITUTE OF INFORMATION TECHNOLOGY,UNA</label>
-            <hr> -->
+        <form action="/auser/alogin" method="POST" class="shadow-lg p-4">
             <div><label class=" text-center pl-2 mt-3 font-weight-bold"><h3>Sign In</h3></label></div>
           <div class="form-group">
             <label for="email" ><h6>Username</h6></label>
-            <input type="email" class="form-control" name="email" id="email">
+            <input type="email" class="form-control" name="aemail" id="aemail">
             <!--Add text-white below if want text color white-->
           </div>
 
           <div class="form-group">
           <label for="pass"><h6>Password</h6></label>
-          <input type="password" class="form-control" name="password" id="password">
+          <input type="password" class="form-control" name="apassword" id="apassword">
           </div>
 
           <button type="submit" class="btn btn-outline-primary mt-3 mb-3 btn-block shadow-sm font-weight-bold">Login</button>
-
-          <div class="text-center"><a class=" mt-5 shadow-sm" href="">Forget Password?</a></div>
+<!--
+          <div class="text-center"><a class=" mt-5 shadow-sm" href="">Forget Password?</a></div> -->
 
           <label class="mt-2"><strong>Not Register Yet?</strong></label>
 
-          <div class=""><a href="/user/register">click here </a></div>
+          <div class=""><a href="/auser/aregister">click here </a></div>
         </form>
 
       </div>
     </div>
   </div>
-<!-- <footer>
-  <label class="text-center">For Administration</label>
-    <a href="/user/adminLogin">click here</a>
-</footer> -->
+
   <!-- Boostrap JavaScript -->
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>

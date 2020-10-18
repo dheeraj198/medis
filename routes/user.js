@@ -9,6 +9,7 @@ const { forwardAuthenticated } = require('../config/auth');
 //
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
+router.get('/adminLogin', forwardAuthenticated, (req, res) => res.render('adminLogin'));
 
 // Register Page
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
